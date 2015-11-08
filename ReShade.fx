@@ -25,6 +25,42 @@ void RFX_VS_PostProcess(in uint id : SV_VertexID, out float4 pos : SV_Position, 
 
 technique Emboss_Technique <bool enabled = 1; toggle = TOGGLE_EFFECTS_KEY; >
 {
+	#if (USE_BLOOM || USE_LENSDIRT)
+		pass BloomPrePass
+		{
+			VertexShader = RFX_VS_PostProcess;
+			PixelShader = PS_ME_BloomPrePass;
+			RenderTarget = texBloom1;
+		}
+
+		pass BloomPass1
+		{
+			VertexShader = RFX_VS_PostProcess;
+			PixelShader = PS_ME_BloomPass1;
+			RenderTarget = texBloom2;
+		}
+
+		pass BloomPass2
+		{
+			VertexShader = RFX_VS_PostProcess;
+			PixelShader = PS_ME_BloomPass2;
+			RenderTarget = texBloom3;
+		}
+
+		pass BloomPass3
+		{
+			VertexShader = RFX_VS_PostProcess;
+			PixelShader = PS_ME_BloomPass3;
+			RenderTarget = texBloom4;
+		}
+
+		pass BloomPass4
+		{
+			VertexShader = RFX_VS_PostProcess;
+			PixelShader = PS_ME_BloomPass4;
+			RenderTarget = texBloom5;
+		}
+	#endif
 	pass Colors
 	{
 		VertexShader = RFX_VS_PostProcess;

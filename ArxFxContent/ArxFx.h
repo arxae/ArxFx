@@ -64,7 +64,7 @@
 #define fBloomThreshold			0.6	//[0.1 to 1.0] Every pixel brighter than this value triggers bloom.
 #define fBloomAmount			0.3	//[1.0 to 20.0] Intensity of bloom.
 #define fBloomSaturation 		0.8	//[0.0 to 2.0] Bloom saturation. 0.0 means white bloom, 2.0 means very very colorful bloom.
-#define fBloomTint 				float3(0.7,0.8,1.0) //[0.0 to 1.0] R, G and B components of bloom tintcolor the bloom color gets shifted to.
+#define fBloomTint 				float3(0.7, 0.8, 1.0) //[0.0 to 1.0] R, G and B components of bloom tintcolor the bloom color gets shifted to.
 
 // Overlays
 //STANDARDVIGNETTE
