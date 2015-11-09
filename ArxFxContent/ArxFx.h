@@ -18,7 +18,7 @@
 #define USE_VIGNETTE			1
 
 // Image Enhancements
-#define USE_SHARPENING			0
+#define USE_ADPSHARPENING		1
 
 // Other
 #define RENDERMODE 				RGBA8 // RGBA8 | RGBA16F | RGBA32F
@@ -74,7 +74,12 @@
 #define fVignetteColor			float3(0.0, 0.0, 0.0) //[0.0 to 1.0] RGB vignette color.
 
 // Image Enhancements
-//SHARPEN
-#define fSharpBias  	     	0.35	//[0.05 to 1.0] How big the sharpen offset is (used to compare neighbor pixels to get sharpen amount
-#define fSharpStrength 			1.0	//[0.05 to 1.0] Amount of sharpening you want.
-#define fSharpClamp 			0.5	//[0.2 to 2.0] Clamps the sharpening to a maximum amount to prevent aliasing
+//Adaptive Sharpen
+#define curve_height 1.00 //[0.15:3.0] //-Main sharpening strength.
+#define video_level_out 0 //[0:1] //-(MPC-HC and MPDN specific) True to preserve BTB & WTW (minor summation error). Normally it should be set to false (0).
+#define curveslope (curve_height*1.5) //[undef] //-Sharpening curve slope, edge region.
+#define D_overshoot 0.016 //[undef] //-Max dark overshoot before max compression.
+#define D_comp_ratio 0.250 //[undef] //-Max compression ratio, dark overshoot (1/0.25=4x).
+#define L_overshoot 0.004 //[undef] //-Max light overshoot before max compression.
+#define L_comp_ratio 0.167 //[undef] //-Max compression ratio, light overshoot (1/0.167=6x).
+#define max_scale_lim 10.0 //[undef] //-Abs change before max compression (1/10=?10%).

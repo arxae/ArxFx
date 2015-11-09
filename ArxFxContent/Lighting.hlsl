@@ -173,5 +173,6 @@ float4 PS_Lighting(float4 vpos : SV_Position, float2 texcoord : TEXCOORD) : SV_T
 		if(iLensdirtMixmode == 4) color.xyz = max(color.xyz, lensdirt.xyz);
 	#endif
 
+	// unsharp
 	return color;
 }
